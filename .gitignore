@@ -11,7 +11,8 @@ __pycache__/
 # Data files
 data/
 *.csv
-*.json
+# Only ignore JSON files in data directory, not package.json
+data/*.json
 *.xml
 
 # IDEs
