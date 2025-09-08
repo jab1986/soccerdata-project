@@ -1,0 +1,62 @@
+{
+  "min_quality_score": 80.0,
+  "max_missing_percentage": 95.0,
+  "allow_future_matches": true,
+  "strict_league_validation": true,
+  "enable_duplicate_check": true,
+  "validation_rules": {
+    "leagues": {
+      "required": [
+        "ENG-Premier League",
+        "ESP-La Liga", 
+        "ITA-Serie A",
+        "GER-Bundesliga",
+        "FRA-Ligue 1",
+        "Big 5 European Leagues Combined"
+      ],
+      "allow_additional": false
+    },
+    "dates": {
+      "format": "YYYY-MM-DD",
+      "allow_future": true,
+      "max_years_ahead": 2
+    },
+    "scores": {
+      "min_value": 0,
+      "max_value": 20,
+      "allow_null": true,
+      "allow_high_null_percentage": true
+    },
+    "match_reports": {
+      "allow_null": true,
+      "allow_high_null_percentage": true
+    },
+    "teams": {
+      "min_length": 2,
+      "max_length": 50,
+      "allow_same_opponent": false
+    }
+  },
+  "special_handling": {
+    "future_fixtures": {
+      "allow_null_scores": true,
+      "allow_null_match_reports": true,
+      "null_percentage_threshold": 95.0
+    },
+    "date_types": {
+      "allow_date_objects": true,
+      "allow_string_dates": true
+    }
+  },
+  "reporting": {
+    "generate_html": true,
+    "generate_json": true,
+    "output_directory": "validation_reports",
+    "include_warnings": true
+  },
+  "integration": {
+    "fail_on_validation_error": false,
+    "log_validation_results": true,
+    "backup_invalid_files": false
+  }
+}

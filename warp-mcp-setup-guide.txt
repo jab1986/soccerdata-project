@@ -1,0 +1,59 @@
+# WARP MCP SERVER CONFIGURATION GUIDE
+
+## This file shows how to configure each MCP server in Warp Agent Mode
+## Go to: Warp Settings > AI > Agents > MCP Servers
+
+## ✅ VERIFIED WORKING MCP SERVERS - Updated 2025-09-07
+
+# GitHub MCP Server ✅
+Server Name: github
+Command: npx -y @modelcontextprotocol/server-github
+Environment Variables:
+  GITHUB_PERSONAL_ACCESS_TOKEN=your_token_here
+
+# SQLite MCP Server ✅ 
+Server Name: sqlite
+Command: npx -y mcp-server-sqlite-npx /home/joe/soccerdata_project/betting_club.db
+# Note: Fixed package name - was @modelcontextprotocol/server-sqlite (doesn't exist)
+
+# Filesystem MCP Server ✅
+Server Name: filesystem
+Command: npx -y @modelcontextprotocol/server-filesystem /home/joe/soccerdata_project
+
+# Fetch MCP Server ✅
+Server Name: fetch
+Command: npx -y mcp-server-fetch-typescript
+# Note: Fixed package name - was @modelcontextprotocol/server-fetch (doesn't exist)
+
+# Time MCP Server ✅
+Server Name: time
+Command: npx -y time-mcp
+# Note: Fixed package name - was @theobrigitte/mcp-time (doesn't exist)
+
+# Sequential Thinking MCP Server ✅
+Server Name: sequential-thinking
+Command: npx -y @modelcontextprotocol/server-sequential-thinking
+# Note: Added for complex problem solving and planning
+
+# Interactive MCP Server ✅ (Enhanced Version)
+Server Name: interactive
+Command: npx -y interactive-mcp-enhanced
+# Note: Enhanced version with clipboard support, notifications, improved UX
+# Alternative: npx -y interactive-mcp (basic version)
+
+# Shrimp Task Manager MCP Server ✅
+Server Name: shrimp-task-manager
+Command: node /home/joe/soccerdata_project/mcp-shrimp-task-manager/dist/index.js
+Environment Variables:
+  DATA_DIR=/home/joe/soccerdata_project/shrimp_data
+  TEMPLATES_USE=en
+  ENABLE_GUI=false
+# Note: Intelligent task management with persistent memory and structured workflows
+
+# WhatsApp MCP Server ❌ REMOVED 
+# Reason: Invite-only, not publicly available
+# Server Name: whatsapp
+# Command: npx -y @ycloud-developers/ycloud-whatsapp-mcp-server
+# Environment Variables:
+#   YCLOUD_API_KEY=your_ycloud_key
+#   WHATSAPP_PHONE_NUMBER=your_whatsapp_number

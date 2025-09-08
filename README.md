@@ -99,6 +99,10 @@ The script generates a CSV file with match results, including:
 
 For more detailed usage examples and API reference, see `docs/user_guide.md`.
 
+For AI agents and automation guidance tailored to this repo, see `.github/copilot-instructions.md`.
+
+For integrating the Context7 MCP server with your enabled MCP extensions, see `docs/context7_mcp_setup.md`.
+
 ## License
 
 This project is for educational purposes. Please respect the terms of service of data sources.

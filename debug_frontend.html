@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soccer Data API Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Soccer Data API Debug Tool</h1>
+    
+    <div class="section">
+        <h2>API Connection Tests</h2>
+        <button onclick="testApiConnection()">Test API Connection</button>
+        <button onclick="testProxy()">Test Proxy (via :3000)</button>
+        <button onclick="testDirectApi()">Test Direct API (:5000)</button>
+        <div id="connection-result"></div>
+    </div>
+
+    <div class="section">
+        <h2>JSON Response Analysis</h2>
+        <button onclick="analyzeJson()">Analyze JSON Structure</button>
+        <div id="json-result"></div>
+    </div>
+
+    <script>
+        async function testApiConnection() {
+            const result = document.getElementById('connection-result');
+            result.innerHTML = '<p>Testing API connection...</p>';
+            
+            try {
+                const response = await fetch('/api/fixtures');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>✅ API Connection Successful</h3>
+                        <p>Status: ${response.status} ${response.statusText}</p>
+                        <p>Total fixtures: ${data.fixtures?.length || 0}</p>
+                        <p>File: ${data.file || 'N/A'}</p>
+                    </div>
+                `;
+            } catch (error) {
+                result.innerHTML = `
+                    <div class="error">
+                        <h3>❌ API Connection Failed</h3>
+                        <p>Error: ${error.message}</p>
+                        <pre>${error.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testProxy() {
+            const result = document.getElementById('connection-result');
+            result.innerHTML = '<p>Testing proxy connection...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/fixtures');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Proxy Connection Successful</h3>
+                        <p>Status: ${response.status}</p>
+                        <p>Fixtures loaded: ${data.fixtures?.length || 0}</p>
+                    </div>
+                `;
+            } catch (error) {
+                result.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Proxy Connection Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testDirectApi() {
+            const result = document.getElementById('connection-result');
+            result.innerHTML = '<p>Testing direct API connection...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/fixtures');
+                const data = await response.json();
+                
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Direct API Connection Successful</h3>
+                        <p>Status: ${response.status}</p>
+                        <p>Fixtures loaded: ${data.fixtures?.length || 0}</p>
+                    </div>
+                `;
+            } catch (error) {
+                result.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Direct API Connection Failed</h3>
+                        <p>Error: ${error.message}</p>
+                        <p>This might be due to CORS policy</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function analyzeJson() {
+            const result = document.getElementById('json-result');
+            result.innerHTML = '<p>Analyzing JSON structure...</p>';
+            
+            try {
+                const response = await fetch('/api/fixtures');
+                const data = await response.json();
+                
+                // Analyze first few fixtures
+                const sample = data.fixtures?.slice(0, 3) || [];
+                
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>JSON Structure Analysis</h3>
+                        <p><strong>Response Keys:</strong> ${Object.keys(data).join(', ')}</p>
+                        <p><strong>Total Fixtures:</strong> ${data.fixtures?.length || 0}</p>
+                        <p><strong>Sample Fixture Keys:</strong> ${sample.length > 0 ? Object.keys(sample[0]).join(', ') : 'No fixtures'}</p>
+                        <h4>Sample Data:</h4>
+                        <pre>${JSON.stringify(sample, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                result.innerHTML = `
+                    <div class="error">
+                        <h3>❌ JSON Analysis Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-run basic test on page load
+        window.onload = () => {
+            console.log('🔧 Debug page loaded');
+            testApiConnection();
+        };
+    </script>
+</body>
+</html>

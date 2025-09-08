@@ -1,0 +1,59 @@
+{
+  "mcpServers": {
+    "shrimp-task-manager": {
+      "command": "node",
+      "args": ["/home/joe/soccerdata_project/mcp-shrimp-task-manager/dist/index.js"],
+      "env": {
+        "DATA_DIR": "/home/joe/soccerdata_project/shrimp_data",
+        "TEMPLATES_USE": "en",
+        "ENABLE_GUI": "true",
+        "WEB_PORT": "3000"
+      },
+      "description": "Shrimp Task Manager for project task coordination"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata_project"],
+      "env": {},
+      "description": "File operations within project directory"
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/home/joe/soccerdata_project/betting_club.db"],
+      "env": {},
+      "description": "SQLite database operations for betting club"
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "env": {},
+      "description": "Web scraping and HTTP requests for data collection"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "description": "GitHub operations for version control"
+    },
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@theobrigitte/mcp-time"],
+      "env": {},
+      "description": "Time utilities for match scheduling"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {},
+      "description": "Complex problem solving and analysis"
+    },
+    "interactive": {
+      "command": "npx",
+      "args": ["-y", "@ttommyth/interactive-mcp"],
+      "env": {},
+      "description": "Interactive workflows for admin efficiency"
+    }
+  }
+}

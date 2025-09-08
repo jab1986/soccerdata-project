@@ -1,0 +1,89 @@
+{
+  "test_timestamp": "2025-09-08T01:51:39.900392",
+  "total_tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "success_rate": 100.0,
+  "detailed_results": [
+    {
+      "test_name": "GET /api/fixtures - Basic Connectivity",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.640004",
+      "details": "Retrieved 1752 fixtures",
+      "http_status": 200,
+      "response_time": 0.07951474189758301
+    },
+    {
+      "test_name": "POST /api/fixtures/filter - Valid Request",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.677549",
+      "details": "Filtered to 10 fixtures",
+      "http_status": 200,
+      "response_time": 0.03630185127258301
+    },
+    {
+      "test_name": "POST /api/fixtures/filter - Filter Application",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.677655",
+      "details": "Filters correctly applied and returned",
+      "http_status": 200,
+      "response_time": null
+    },
+    {
+      "test_name": "POST /api/fixtures/export - Valid Request",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.686965",
+      "details": "Export successful: test_export_reliability.csv",
+      "http_status": 200,
+      "response_time": 0.008986949920654297
+    },
+    {
+      "test_name": "POST /api/scrape - Legacy Support",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.692579",
+      "details": "Legacy endpoint returns proper guidance",
+      "http_status": 200,
+      "response_time": 0.005182981491088867
+    },
+    {
+      "test_name": "GET /nonexistent - 404 Handling",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.699438",
+      "details": "Properly returns 404 for non-existent endpoints",
+      "http_status": 404,
+      "response_time": 0.0064697265625
+    },
+    {
+      "test_name": "POST /api/fixtures/filter - Malformed JSON",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.708404",
+      "details": "Properly handles malformed JSON with 400 status",
+      "http_status": 400,
+      "response_time": 0.008731603622436523
+    },
+    {
+      "test_name": "CORS - Frontend Access",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.817207",
+      "details": "CORS properly configured: http://localhost:3000",
+      "http_status": 200,
+      "response_time": 0.1084146499633789
+    },
+    {
+      "test_name": "Response Consistency - Required Fields",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.898727",
+      "details": "All required fixture fields present",
+      "http_status": 200,
+      "response_time": null
+    },
+    {
+      "test_name": "Response Consistency - NaN Handling",
+      "passed": true,
+      "timestamp": "2025-09-08T01:51:39.898933",
+      "details": "NaN values properly converted to null",
+      "http_status": 200,
+      "response_time": null
+    }
+  ]
+}

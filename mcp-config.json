@@ -1,0 +1,107 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "description": "Official GitHub MCP server for repository management, issues, PRs",
+      "assignedAgents": ["System Integration Agent", "Integration Testing Agent"]
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/home/joe/soccerdata_project/betting_club.db"],
+      "description": "Official SQLite MCP server for database operations",
+      "assignedAgents": ["Betting System API Agent", "Data Integration Agent"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata_project"],
+      "description": "Official filesystem server for file operations in project directory",
+      "assignedAgents": ["Data Integration Agent", "Betting Club UI Agent", "System Integration Agent"]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Official fetch server for web scraping and API calls",
+      "assignedAgents": ["Data Integration Agent", "Integration Testing Agent"]
+    },
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@theobrigitte/mcp-time"],
+      "description": "Time and date utilities with timezone conversion for match scheduling",
+      "assignedAgents": ["Data Integration Agent", "Betting System API Agent"]
+    },
+    "whatsapp": {
+      "command": "npx",
+      "args": ["-y", "@ycloud-developers/ycloud-whatsapp-mcp-server"],
+      "env": {
+        "YCLOUD_API_KEY": "",
+        "WHATSAPP_PHONE_NUMBER": ""
+      },
+      "description": "WhatsApp Business Platform integration for bet input parsing",
+      "assignedAgents": ["Betting Club UI Agent", "Betting System API Agent"]
+    },
+    "interactive": {
+      "command": "npx",
+      "args": ["-y", "@ttommyth/interactive-mcp"],
+      "description": "Interactive LLM workflows for admin efficiency and user prompts",
+      "assignedAgents": ["Betting Club UI Agent", "Integration Testing Agent"]
+    }
+  },
+  "agentMcpAssignments": {
+    "Data Integration Agent": {
+      "primary": ["sqlite", "fetch", "filesystem", "time"],
+      "secondary": [],
+      "purpose": "Database operations for scraped data, web scraping for match results, file management for CSV data, time handling for match scheduling"
+    },
+    "Betting System API Agent": {
+      "primary": ["sqlite", "whatsapp", "time"],
+      "secondary": ["fetch"],
+      "purpose": "Database operations for bets and league table, WhatsApp integration for bet input, time utilities for scheduling, optional web API calls"
+    },
+    "Betting Club UI Agent": {
+      "primary": ["whatsapp", "interactive", "filesystem"],
+      "secondary": ["fetch"],
+      "purpose": "WhatsApp message parsing tools, interactive workflows for admin interface, file operations for frontend assets, optional API calls for data fetching"
+    },
+    "Integration Testing Agent": {
+      "primary": ["fetch", "interactive", "github"],
+      "secondary": ["sqlite", "filesystem"],
+      "purpose": "API testing and validation, interactive testing workflows, GitHub integration for CI/CD, database and file validation"
+    },
+    "System Integration Agent": {
+      "primary": ["github", "filesystem"],
+      "secondary": ["sqlite", "fetch"],
+      "purpose": "Version control and deployment, file system operations, database management, web service health checks"
+    }
+  },
+  "warpInstallationInstructions": {
+    "step1": "Configure MCP servers in Warp Agent Mode settings",
+    "step2": "Go to Warp Settings > AI > Agents > MCP Servers",
+    "step3": "Add each MCP server configuration individually",
+    "step4": "Set environment variables in your shell profile or Warp agent settings:",
+    "environmentVariables": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "Get from GitHub Settings > Developer settings > Personal access tokens",
+      "YCLOUD_API_KEY": "Get from YCloud dashboard for WhatsApp integration (optional)",
+      "WHATSAPP_PHONE_NUMBER": "Your WhatsApp Business phone number (optional)"
+    },
+    "step5": "Assign specific MCP servers to each agent profile in agent permissions",
+    "step6": "Test MCP server connectivity in each agent pane"
+  },
+  "rationale": {
+    "selectedServers": {
+      "github": "Essential for version control, issue tracking, and CI/CD integration",
+      "sqlite": "Perfect for betting club database - lightweight, local, no auth required",
+      "filesystem": "Needed for CSV data management, frontend assets, and file operations",
+      "fetch": "Critical for web scraping match results and API integrations",
+      "time": "Essential for match scheduling, timezone handling, and betting deadlines",
+      "whatsapp": "Key requirement for admin efficiency - parsing bets from WhatsApp messages",
+      "interactive": "Enables efficient admin workflows and user interaction patterns"
+    },
+    "rejectedServers": {
+      "reason": "Avoided complex database servers (PostgreSQL, MySQL), cloud services requiring authentication, specialized tools not relevant to betting club functionality, and servers that duplicate existing capabilities"
+    }
+  }
+}
