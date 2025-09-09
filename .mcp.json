@@ -2,12 +2,11 @@
   "mcpServers": {
     "shrimp-task-manager": {
       "command": "node",
-      "args": ["/home/joe/soccerdata_project/mcp-shrimp-task-manager/dist/index.js"],
+      "args": ["/home/joe/soccerdata-project/mcp-shrimp-task-manager/dist/index.js"],
       "env": {
-        "DATA_DIR": "/home/joe/soccerdata_project/shrimp_data",
+        "DATA_DIR": "/home/joe/soccerdata-project/shrimp_data",
         "TEMPLATES_USE": "en",
-        "ENABLE_GUI": "true",
-        "WEB_PORT": "3000"
+        "ENABLE_GUI": "false"
       },
       "description": "Shrimp Task Manager for project task coordination"
     },

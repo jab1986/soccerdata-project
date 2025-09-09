@@ -10,13 +10,13 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata_project"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata-project"],
       "env": {},
       "working_directory": null
     },
     "sqlite": {
       "command": "npx",
-      "args": ["-y", "mcp-server-sqlite-npx", "/home/joe/soccerdata_project/betting_club.db"],
+      "args": ["-y", "mcp-server-sqlite-npx", "/home/joe/soccerdata-project/betting_club.db"],
       "env": {},
       "working_directory": null
     },
@@ -46,9 +46,9 @@
     },
     "shrimp-task-manager": {
       "command": "node",
-      "args": ["/home/joe/soccerdata_project/mcp-shrimp-task-manager/dist/index.js"],
+      "args": ["/home/joe/soccerdata-project/mcp-shrimp-task-manager/dist/index.js"],
       "env": {
-        "DATA_DIR": "/home/joe/soccerdata_project/shrimp_data",
+        "DATA_DIR": "/home/joe/soccerdata-project/shrimp_data",
         "TEMPLATES_USE": "en",
         "ENABLE_GUI": "false"
       },

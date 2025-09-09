@@ -11,13 +11,13 @@
     },
     "sqlite": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/home/joe/soccerdata_project/betting_club.db"],
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/home/joe/soccerdata-project/betting_club.db"],
       "description": "Official SQLite MCP server for database operations",
       "assignedAgents": ["Betting System API Agent", "Data Integration Agent"]
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata_project"],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/joe/soccerdata-project"],
       "description": "Official filesystem server for file operations in project directory",
       "assignedAgents": ["Data Integration Agent", "Betting Club UI Agent", "System Integration Agent"]
     },
